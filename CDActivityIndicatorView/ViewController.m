@@ -21,7 +21,22 @@
  */
 
 #import "ViewController.h"
+#import "CDActivityIndicatorView.h"
 
 @implementation ViewController
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    CDActivityIndicatorView * activityIndicatorView = [[CDActivityIndicatorView alloc] initWithImage:[UIImage imageNamed:@"custom_spinner.png"]];
+    
+    activityIndicatorView.center = self.view.center;
+    
+    [self.view addSubview:activityIndicatorView];
+    
+    [activityIndicatorView startAnimating];
+
+}
 
 @end

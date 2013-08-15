@@ -27,4 +27,6 @@
 @property (nonatomic, strong) UIImage * image;
 @property (nonatomic, assign) BOOL fitFrame;
 
+-(id)initWithImage:(UIImage*)image;
+
 @end

@@ -57,6 +57,30 @@
     return self;
 }
 
+- (id)initWithActivityIndicatorStyle:(UIActivityIndicatorViewStyle)style
+{
+    self = [super initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    if (self)
+    {
+        [self _init];
+    }
+    
+    return self;
+}
+
+-(id)initWithImage:(UIImage*)image
+{
+    self = [self initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    if(self)
+    {
+        self.image = image;
+    }
+    
+    return self;
+}
+
 - (void)_init
 {
     self.animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -77,11 +101,20 @@
     {
         self.image = [UIImage imageNamed:self.imageName];
     }
+    else if(self.image && !self.imageView)
+    {
+        self.image = self.image;
+    }
 }
 
 -(void)setImage:(UIImage *)image
 {
     _image = image;
+    
+    if(!self.frame.size.width)
+    {
+        return;
+    }
     
     [self.imageView removeFromSuperview];
     self.imageView = nil;
